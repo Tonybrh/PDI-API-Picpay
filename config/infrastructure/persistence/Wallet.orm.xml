@@ -8,8 +8,8 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="balance" type="decimal" column="balance" scale="2" precision="10"/>
-        <one-to-one field="user" target-entity="App\Entity\User">
-            <join-column name="user_id" referenced-column-name="id" unique="true"/>
+        <one-to-one field="userId" target-entity="App\Domain\Entity\User">
+            <join-column name="nu_seq_user" referenced-column-name="nu_seq_user" unique="true"/>
         </one-to-one>
     </entity>
 </doctrine-mapping>

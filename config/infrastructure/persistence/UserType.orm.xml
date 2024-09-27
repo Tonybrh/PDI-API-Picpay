@@ -7,6 +7,6 @@
         <id name="id" type="integer" column="nu_seq_user_type">
             <generator strategy="AUTO"/>
         </id>
-        <field name="descricao" type="string" column="descricao" length="255" unique="true"/>
+        <field name="name" type="string" column="name" length="255" unique="true"/>
     </entity>
 </doctrine-mapping>

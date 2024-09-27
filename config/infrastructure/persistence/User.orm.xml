@@ -9,11 +9,9 @@
         <field name="email" type="string" length="255" column="co_email" unique="true" nullable="false"/>
         <field name="password" type="string" length="255" column="password" nullable="false"/>
 
-        <many-to-one field="user_type" target-entity="App\Domain\Entity\UserType">
-            <join-column name="nu_seq_user_type" referenced-column-name="id" nullable="false"/>
+        <many-to-one field="userType" target-entity="App\Domain\Entity\UserType">
+            <join-column name="nu_seq_user_type" referenced-column-name="nu_seq_user_type" nullable="false"/>
         </many-to-one>
 
-        <field name="created_at" type="datetime" column="created_at" nullable="false"/>
-        <field name="updated_at" type="datetime" column="updated_at" nullable="false"/>
     </entity>
 </doctrine-mapping>
