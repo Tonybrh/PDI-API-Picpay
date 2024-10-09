@@ -2,28 +2,36 @@
 
 namespace App\Domain\Service;
 
+use App\Domain\Exceptions\User\UserAlreadyExistsException;
 use App\Domain\ValueObject\UserVO;
+use App\Infrastructure\Builder\UserBuilder;
 use App\Infrastructure\Repository\UserRepository;
+use App\Infrastructure\Repository\UserTypeRepository;
 
 class UserService
 {
     public function __construct(
-        private readonly UserRepository $userRepository
-    ){}
+        private readonly UserRepository $userRepository,
+        private readonly UserBuilder $userBuilder,
+        private readonly UserTypeRepository $userTypeRepository
+    ){
+    }
 
     public function findUsers(): array
     {
         return $this->userRepository->findAll();
     }
 
-    public function insertUser(UserVO $data): void
+    public function insertUser(UserVO $userVO): void
     {
-        $cpfCpj = $data['cpfCnpj'];
 
-        if ($this->userRepository->findByCpfCnpj($cpfCpj)) {
-            throw new \Exception('CPF/CNPJ already exists');
+        if ($this->userRepository->findByCpfCnpj($userVO->getCpfCnpj())) {
+            throw new UserAlreadyExistsException();
         }
 
-        $this->userRepository->insertUser($data);
+        $userType = $this->userTypeRepository->find($userVO->getUserType());
+
+        $user = $this->userBuilder->build($userVO, $userType);
+        $this->userRepository->insertUser($user);
     }
 }

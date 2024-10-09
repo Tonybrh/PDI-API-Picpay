@@ -3,20 +3,15 @@
 namespace App\Domain\ValueObject;
 
 use App\Domain\Entity\UserType;
+use Symfony\Component\Serializer\Attribute\Ignore;
 
 class UserVO
 {
-    private int $id;
     private string $name;
     private string $cpfCnpj;
     private string $email;
     private string $password;
-    private UserType $userType;
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    private int $userType;
 
     public function getName(): string
     {
@@ -38,8 +33,33 @@ class UserVO
         return $this->password;
     }
 
-    public function getUserType(): UserType
+    public function getUserType(): int
     {
         return $this->userType;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function setCpfCnpj(string $cpfCnpj): void
+    {
+        $this->cpfCnpj = $cpfCnpj;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function setUserType(int $userType): void
+    {
+        $this->userType = $userType;
     }
 }

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Domain\Entity\Transaction" table="transaction">
+    <entity name="App\Domain\Entity\Transaction" table="transaction" schema="public">
         <id name="id" type="integer" column="nu_seq_transaction">
             <generator strategy="AUTO"/>
         </id>

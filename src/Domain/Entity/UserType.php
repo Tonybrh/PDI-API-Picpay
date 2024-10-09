@@ -4,8 +4,7 @@ namespace App\Domain\Entity;
 
 class UserType
 {
-    private string $id;
-    private int $userId;
+    private int $id;
     private string $name;
 
     public function getId(): string
@@ -16,16 +15,6 @@ class UserType
     public function setId(string $id): void
     {
         $this->id = $id;
-    }
-
-    public function getUserId(): int
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(int $userId): void
-    {
-        $this->userId = $userId;
     }
 
     public function getName(): string

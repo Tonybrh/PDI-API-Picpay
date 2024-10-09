@@ -1,0 +1,13 @@
+# config/serializer/UserVO.yaml
+App\Domain\ValueObject\UserVO:
+  exclusion_policy: NONE
+  attributes:
+    cpfCnpj:
+      ignore: false
+    password:
+      ignore: false
+    email:
+      ignore: false
+    userType:
+      type: integer
+      ignore: false

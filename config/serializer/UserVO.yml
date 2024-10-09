@@ -1,5 +1,0 @@
-# config/serializer/UserVO.yaml
-App\Domain\ValueObject\UserVO:
-  attributes:
-    name:
-      serialized_name: name

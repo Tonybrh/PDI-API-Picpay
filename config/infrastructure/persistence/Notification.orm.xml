@@ -3,7 +3,7 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\Notification" table="notification">
+    <entity name="App\Domain\Entity\Notification" table="notification" schema="public">
         <id name="id" type="integer" column="nu_seq_notification">
             <generator strategy="AUTO"/>
         </id>

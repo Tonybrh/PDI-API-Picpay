@@ -10,16 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use OpenApi\Attributes as OA;
-use Symfony\Component\Serializer\SerializerInterface;
 
 
 class UserPostAction
 {
     public function __construct(
         private readonly UserService $userService,
-        private readonly SerializerInterface $serializer
     ){
-
     }
 
     #[Route('/user/post', name: 'user_post', methods: ['POST'])]
@@ -50,12 +47,8 @@ class UserPostAction
             ),
         ]
     )]
-    public function __invoke(#[MapRequestPayload(acceptFormat: "form")] UserVO $userVO): JsonResponse
+    public function __invoke(#[MapRequestPayload(acceptFormat: "json")] UserVO $userVO): JsonResponse
     {
-        dump($userVO);
-        exit();
-
-
         $this->userService->insertUser($userVO);
 
         return new JsonResponse(null, Response::HTTP_NO_CONTENT);
