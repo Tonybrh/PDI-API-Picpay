@@ -12,7 +12,7 @@ class UserVO
     private string $email;
     private string $password;
     private int $userType;
-
+    private ?float $balance = null;
     public function getName(): string
     {
         return $this->name;
@@ -61,5 +61,15 @@ class UserVO
     public function setUserType(int $userType): void
     {
         $this->userType = $userType;
+    }
+
+    public function getBalance(): ?float
+    {
+        return $this->balance;
+    }
+
+    public function setBalance(?float $balance): void
+    {
+        $this->balance = $balance;
     }
 }

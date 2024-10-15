@@ -13,5 +13,9 @@
             <join-column name="nu_seq_user_type" referenced-column-name="nu_seq_user_type" nullable="false"/>
         </many-to-one>
 
+        <one-to-one field="wallet" target-entity="App\Domain\Entity\Wallet" >
+            <join-column name="nu_seq_wallet" referenced-column-name="nu_seq_wallet" unique="true"/>
+        </one-to-one>
+
     </entity>
 </doctrine-mapping>

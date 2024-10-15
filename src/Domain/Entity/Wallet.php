@@ -6,7 +6,7 @@ class Wallet
 {
     private int $id;
     private string $userId;
-    private float $balance;
+    private ?float $balance = null;
 
     public function getId(): int
     {
@@ -28,7 +28,7 @@ class Wallet
         $this->userId = $userId;
     }
 
-    public function getBalance(): float
+    public function getBalance(): ?float
     {
         return $this->balance;
     }

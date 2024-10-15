@@ -3,22 +3,21 @@
 namespace App\Adapter\Http\User;
 
 use App\Domain\Service\UserService;
-use App\Domain\ValueObject\UserVO;
+use App\Domain\ValueObject\WalletVO;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use OpenApi\Attributes as OA;
 
-
-class UserPostAction
+class UpdateUserWalletPostAction
 {
     public function __construct(
         private readonly UserService $userService,
     ){
     }
 
-    #[Route('/user/post', name: 'user_post', methods: ['POST'])]
+    #[Route('/user/update-wallet', name: 'user_update_wallet', methods: ['POST'])]
     #[OA\POST(
         summary: 'Post a User',
         requestBody: new OA\RequestBody(
@@ -26,18 +25,15 @@ class UserPostAction
             required: true,
             content: new OA\JsonContent(
                 properties: [
-                    new OA\Property(property: 'name', type: 'string'),
-                    new OA\Property(property: 'email', type: 'string'),
-                    new OA\Property(property: 'password', type: 'string'),
-                    new OA\Property(property: 'cpfCnpj', type: 'string'),
-                    new OA\Property(property: 'userType', type: 'integer')
+                    new OA\Property(property: 'userId', type: 'string'),
+                    new OA\Property(property: 'balance', type: 'number'),
                 ],
                 type: 'object'
             )
         ),
         responses: [
             new OA\Response(
-                response: Response::HTTP_NO_CONTENT,
+                response: Response::HTTP_OK,
                 description: 'success',
             ),
             new OA\Response(
@@ -46,10 +42,10 @@ class UserPostAction
             ),
         ]
     )]
-    public function __invoke(#[MapRequestPayload(acceptFormat: "json")] UserVO $userVO): JsonResponse
+    public function __invoke(#[MapRequestPayload(acceptFormat: "json")] WalletVO $walletVO): JsonResponse
     {
-        $this->userService->insertUser($userVO);
+        $this->userService->updateUserWallet($walletVO);
 
-        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
+        return new JsonResponse("Carteira atualizada com sucesso!!", Response::HTTP_OK);
     }
 }
