@@ -3,16 +3,19 @@
 namespace App\Domain\Service;
 
 use App\Domain\Exceptions\User\UserAlreadyExistsException;
+use App\Domain\Exceptions\User\UserNotFoundException;
 use App\Domain\ValueObject\UserVO;
 use App\Domain\ValueObject\WalletVO;
 use App\Infrastructure\Builder\UserBuilder;
 use App\Infrastructure\Builder\WalletBuilder;
 use App\Infrastructure\Repository\UserRepository;
 use App\Infrastructure\Repository\UserTypeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UserService
 {
     public function __construct(
+        private readonly EntityManagerInterface $entityManager,
         private readonly UserRepository $userRepository,
         private readonly UserBuilder $userBuilder,
         private readonly UserTypeRepository $userTypeRepository,
@@ -28,7 +31,10 @@ class UserService
     public function insertUser(UserVO $userVO): void
     {
 
-        if ($this->userRepository->findByCpfCnpj($userVO->getCpfCnpj())) {
+        if (
+            $this->userRepository->findByCpfCnpj($userVO->getCpfCnpj())
+            || $this->userRepository->findByEmail($userVO->getEmail())
+        ) {
             throw new UserAlreadyExistsException();
         }
 
@@ -40,7 +46,23 @@ class UserService
     public function updateUserWallet(WalletVO $walletVO): void
     {
         $user = $this->userRepository->find($walletVO->getUserId());
-        $wallet = $this->walletBuilder->build($walletVO);
+
+        if (!$user) {
+            throw new UserNotFoundException();
+        }
+
+        $wallet = $user->getWallet();
+
+        if (!$wallet) {
+            $wallet = $this->walletBuilder->build($walletVO, $user);
+        } else {
+            $wallet->setBalance($walletVO->getBalance());
+        }
+
         $user->setWallet($wallet);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->persist($wallet);
+        $this->entityManager->flush();
     }
 }

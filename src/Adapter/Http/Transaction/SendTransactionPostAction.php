@@ -10,10 +10,11 @@ use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use OpenApi\Attributes as OA;
 
-class SendTransactionGetAction
+class SendTransactionPostAction
 {
-    public function __construct(private readonly TransactionService $transactionService)
-    {
+    public function __construct(
+        private readonly TransactionService $transactionService
+    ){
     }
 
     #[Route('/transaction/send', name: 'transaction_send', methods: ['POST'])]
@@ -44,7 +45,7 @@ class SendTransactionGetAction
     )]
     public function __invoke(#[MapRequestPayload(acceptFormat: 'json')] TransactionVO $transactionVO): JsonResponse
     {
-        $this->transactionService->createTransaction(1, 2, 100);
+        $this->transactionService->createTransaction($transactionVO);
 
         return new JsonResponse("Transação realizada com sucesso!!", Response::HTTP_OK);
     }

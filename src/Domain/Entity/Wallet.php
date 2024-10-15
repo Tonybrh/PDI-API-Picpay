@@ -5,7 +5,7 @@ namespace App\Domain\Entity;
 class Wallet
 {
     private int $id;
-    private string $userId;
+    private User $userId;
     private ?float $balance = null;
 
     public function getId(): int
@@ -18,12 +18,12 @@ class Wallet
         $this->id = $id;
     }
 
-    public function getUserId(): string
+    public function getUserId(): User
     {
         return $this->userId;
     }
 
-    public function setUserId(string $userId): void
+    public function setUserId(User $userId): void
     {
         $this->userId = $userId;
     }
