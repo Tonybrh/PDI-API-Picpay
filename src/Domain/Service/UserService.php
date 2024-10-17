@@ -10,17 +10,19 @@ use App\Infrastructure\Builder\UserBuilder;
 use App\Infrastructure\Builder\WalletBuilder;
 use App\Infrastructure\Repository\UserRepository;
 use App\Infrastructure\Repository\UserTypeRepository;
+use App\Infrastructure\Repository\WalletRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-class UserService
+readonly class UserService
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly UserRepository $userRepository,
-        private readonly UserBuilder $userBuilder,
-        private readonly UserTypeRepository $userTypeRepository,
-        private readonly WalletBuilder $walletBuilder
-    ){
+        private  EntityManagerInterface $entityManager,
+        private  UserRepository $userRepository,
+        private  UserBuilder $userBuilder,
+        private  UserTypeRepository $userTypeRepository,
+        private  WalletBuilder $walletBuilder,
+        private WalletRepository $walletRepository
+    ) {
     }
 
     public function findUsers(): array
@@ -61,8 +63,9 @@ class UserService
 
         $user->setWallet($wallet);
 
-        $this->entityManager->persist($user);
-        $this->entityManager->persist($wallet);
-        $this->entityManager->flush();
+        $this->userRepository->persist($user);
+        $this->walletRepository->persist($wallet);
+        $this->userRepository->flush();
+        $this->walletRepository->flush();
     }
 }

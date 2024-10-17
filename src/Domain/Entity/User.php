@@ -9,7 +9,7 @@ class User
     private string $cpfCnpj;
     private string $email;
     private string $password;
-    private Wallet $wallet;
+    private ?Wallet $wallet = null;
     private UserType $userType;
 
     public function getId(): int
@@ -71,7 +71,7 @@ class User
     {
         $this->userType = $userType;
     }
-    public function getWallet(): Wallet
+    public function getWallet(): ?Wallet
     {
         return $this->wallet;
     }
