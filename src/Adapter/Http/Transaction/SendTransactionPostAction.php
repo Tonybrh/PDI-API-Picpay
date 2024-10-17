@@ -45,7 +45,7 @@ class SendTransactionPostAction
     )]
     public function __invoke(#[MapRequestPayload(acceptFormat: 'json')] TransactionVO $transactionVO): JsonResponse
     {
-        $this->transactionService->createTransaction($transactionVO);
+        $this->transactionService->create($transactionVO);
 
         return new JsonResponse("Transação realizada com sucesso!!", Response::HTTP_OK);
     }

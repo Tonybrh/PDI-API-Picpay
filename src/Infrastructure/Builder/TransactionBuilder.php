@@ -3,6 +3,7 @@
 namespace App\Infrastructure\Builder;
 
 use App\Domain\Entity\Transaction;
+use App\Domain\Entity\User;
 use App\Domain\ValueObject\TransactionVO;
 
 class TransactionBuilder

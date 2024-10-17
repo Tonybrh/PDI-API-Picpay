@@ -2,6 +2,8 @@
 
 namespace App\Domain\ValueObject;
 
+use App\Domain\Entity\User;
+
 class TransactionVO
 {
     private int $senderId;

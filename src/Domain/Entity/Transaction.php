@@ -7,7 +7,7 @@ class Transaction
     private int $id;
     private int $senderId;
     private int $receiverId;
-    private int $value;
+    private string $value;
     private string $status;
     private string $createdAt;
     private string $updatedAt;

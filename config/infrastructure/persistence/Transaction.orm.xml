@@ -13,12 +13,7 @@
         <field name="updatedAt" type="datetime" column="updated_at"/>
         <field name="status" type="string" column="status" length="20"/>
 
-        <many-to-one field="senderId" target-entity="App\Domain\Entity\User">
-            <join-column name="nu_seq_user_sender" referenced-column-name="nu_seq_user"/>
-        </many-to-one>
-
-        <many-to-one field="receiverId" target-entity="App\Domain\Entity\User">
-            <join-column name="nu_seq_user_receiver" referenced-column-name="nu_seq_user"/>
-        </many-to-one>
+        <field name="senderId" type="integer" column="nu_seq_user_sender" />
+        <field name="receiverId" type="integer" column="nu_seq_user_receiver" />
     </entity>
 </doctrine-mapping>
