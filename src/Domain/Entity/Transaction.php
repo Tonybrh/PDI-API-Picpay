@@ -9,8 +9,8 @@ class Transaction
     private int $receiverId;
     private string $value;
     private string $status;
-    private string $createdAt;
-    private string $updatedAt;
+    private \DateTime $createdAt;
+    private \DateTime $updatedAt;
 
     public function getId(): int
     {
@@ -62,22 +62,22 @@ class Transaction
         $this->status = $status;
     }
 
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }

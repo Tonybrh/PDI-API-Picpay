@@ -16,7 +16,6 @@ use Doctrine\ORM\EntityManagerInterface;
 readonly class UserService
 {
     public function __construct(
-        private  EntityManagerInterface $entityManager,
         private  UserRepository $userRepository,
         private  UserBuilder $userBuilder,
         private  UserTypeRepository $userTypeRepository,
@@ -42,7 +41,7 @@ readonly class UserService
 
         $userType = $this->userTypeRepository->find($userVO->getUserType());
         $user = $this->userBuilder->build($userVO, $userType);
-        $this->userRepository->insertUser($user);
+        $this->userRepository->insertUpdate($user);
     }
 
     public function updateUserWallet(WalletVO $walletVO): void
@@ -63,9 +62,8 @@ readonly class UserService
 
         $user->setWallet($wallet);
 
-        $this->userRepository->persist($user);
+        $this->userRepository->insertUpdate($user);
         $this->walletRepository->persist($wallet);
-        $this->userRepository->flush();
         $this->walletRepository->flush();
     }
 }

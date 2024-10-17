@@ -15,8 +15,8 @@ class TransactionBuilder
         $transaction->setReceiverId($transactionVO->getReceiverId());
         $transaction->setValue($transactionVO->getValue());
         $transaction->setStatus('pending');
-        $transaction->setCreatedAt(date('Y-m-d H:i:s'));
-        $transaction->setUpdatedAt(date('Y-m-d H:i:s'));
+        $transaction->setCreatedAt(new \DateTime("now"));
+        $transaction->setUpdatedAt(new \DateTime("now"));
 
         return $transaction;
     }
