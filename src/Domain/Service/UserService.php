@@ -63,7 +63,6 @@ readonly class UserService
         $user->setWallet($wallet);
 
         $this->userRepository->insertUpdate($user);
-        $this->walletRepository->persist($wallet);
-        $this->walletRepository->flush();
+        $this->walletRepository->insertUpdate($wallet);
     }
 }

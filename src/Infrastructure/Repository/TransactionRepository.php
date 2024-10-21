@@ -18,4 +18,19 @@ class TransactionRepository extends ServiceEntityRepository
         $this->getEntityManager()->persist($transaction);
         $this->getEntityManager()->flush();
     }
+
+    public function beginTransaction(): void
+    {
+        $this->getEntityManager()->beginTransaction();
+    }
+
+    public function rollback(): void
+    {
+        $this->getEntityManager()->rollback();
+    }
+
+    public function commit(): void
+    {
+        $this->getEntityManager()->commit();
+    }
 }
