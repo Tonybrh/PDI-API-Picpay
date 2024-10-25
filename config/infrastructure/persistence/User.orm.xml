@@ -20,5 +20,7 @@
             <join-column name="nu_seq_wallet" referenced-column-name="nu_seq_wallet" unique="true"/>
         </one-to-one>
 
+        <field name="roles" column="json_roles" type="json"/>
+
     </entity>
 </doctrine-mapping>

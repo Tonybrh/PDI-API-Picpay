@@ -13,7 +13,7 @@ class TransactionRepository extends ServiceEntityRepository
         parent::__construct($registry, Transaction::class);
     }
 
-    public function insert(Transaction $transaction): void
+    public function persist(Transaction $transaction): void
     {
         $this->getEntityManager()->persist($transaction);
         $this->getEntityManager()->flush();

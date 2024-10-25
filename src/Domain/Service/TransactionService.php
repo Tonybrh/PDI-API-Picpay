@@ -3,14 +3,14 @@
 namespace App\Domain\Service;
 
 use App\Domain\Entity\User;
-use App\Domain\Enums\UserTypeEnum;
+use App\Domain\Enums\UserRoleEnum;
 use App\Domain\Exceptions\Transaction\NotAllowedByShopmanException;
 use App\Domain\Exceptions\Transaction\TransactionNotAllowedException;
+use App\Domain\Exceptions\Wallet\WalletNotFoundException;
 use App\Domain\ValueObject\TransactionVO;
 use App\Infrastructure\Builder\TransactionBuilder;
 use App\Infrastructure\Repository\TransactionRepository;
 use App\Infrastructure\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 readonly class TransactionService
 {
@@ -32,29 +32,29 @@ readonly class TransactionService
         }
 
         $this->transactionRepository->beginTransaction();
+
+        if ($userSender->getWallet()->getId()) {
+            throw new WalletNotFoundException();
+        }
+
         $this->walletService->spendBalance($userSender->getWallet()->getId(), $transactionVO->getValue());
 
-        try {
-            $authorize = $this->authorizeTransactionService->authorize();
-
-            if (!$this->isAuthorized($authorize)) {
-                throw new TransactionNotAllowedException();
-            }
-
-            $this->walletService->addBalance($userReceiver->getWallet()->getId(), $transactionVO->getValue());
-            $transaction = $this->transactionBuilder->build($transactionVO);
-            $this->transactionRepository->insert($transaction);
-
-            $this->transactionRepository->commit();
-        } catch (\Exception $e) {
+        if (!$this->isAuthorized($this->authorizeTransactionService->authorize())) {
             $this->transactionRepository->rollback();
+            throw new TransactionNotAllowedException();
         }
+
+        $this->walletService->addBalance($userReceiver->getWallet()->getId(), $transactionVO->getValue());
+        $transaction = $this->transactionBuilder->build($transactionVO);
+        $this->transactionRepository->persist($transaction);
+
+        $this->transactionRepository->commit();
     }
 
     private function userIsShopman(User $user): bool
     {
-        return $user->getUserType()->getId() == UserTypeEnum::SHOPMAN->value;
-    }
+        return $user->getUserType()->getId() == UserRoleEnum::ROLE_SHOPMAN->value;
+    } // mudar para o userService
 
     private function isAuthorized(array $authorize): bool
     {

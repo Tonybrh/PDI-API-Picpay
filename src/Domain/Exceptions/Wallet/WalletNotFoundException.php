@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Exceptions\Transaction;
+namespace App\Domain\Exceptions\Wallet;
 
 use Throwable;
 use DomainException;
 
-class TransactionNotAllowedException extends DomainException
+class WalletNotFoundException extends DomainException
 {
-    private const MENSAGEM_DEFAULT = 'Transação não autorizada!!';
+    private const MENSAGEM_DEFAULT = 'Carteira não existente, atualize sua carteira!!';
 
     public function __construct($message = null, $code = null, Throwable $previous = null)
     {

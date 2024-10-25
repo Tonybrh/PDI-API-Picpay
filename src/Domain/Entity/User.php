@@ -2,7 +2,10 @@
 
 namespace App\Domain\Entity;
 
-class User
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     private int $id;
     private string $name;
@@ -11,12 +14,14 @@ class User
     private string $password;
     private ?Wallet $wallet = null;
     private UserType $userType;
+    private array $roles = [];
 
     public function getId(): int
     {
         return $this->id;
     }
 
+    #[\Override]
     public function getPassword(): string
     {
         return $this->password;
@@ -78,5 +83,32 @@ class User
     public function setWallet(Wallet $wallet): void
     {
         $this->wallet = $wallet;
+    }
+
+    #[\Override]
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): User
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    #[\Override]
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }

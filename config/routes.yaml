@@ -1,5 +1,7 @@
 controllers:
     resource:
         path: ../src/Adapter/Http/
-        namespace: App\Controller
+        namespace: App\Adapter\Http
     type: attribute
+api_login_check:
+    path: /api/login_check

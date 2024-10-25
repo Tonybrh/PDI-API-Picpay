@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use OpenApi\Attributes as OA;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class SendTransactionPostAction
 {
@@ -17,7 +19,7 @@ class SendTransactionPostAction
     ){
     }
 
-    #[Route('/transaction/send', name: 'transaction_send', methods: ['POST'])]
+    #[Route('/api/transaction/send', name: 'transaction_send', methods: ['POST'])]
     #[OA\POST(
         summary: 'Send a Transaction',
         requestBody: new OA\RequestBody(
