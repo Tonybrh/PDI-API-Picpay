@@ -13,7 +13,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
     private string $password;
     private ?Wallet $wallet = null;
-    private UserType $userType;
     private array $roles = [];
 
     public function getId(): int
@@ -67,15 +66,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->cpfCnpj = $cpfCnpj;
     }
 
-    public function getUserType(): UserType
-    {
-        return $this->userType;
-    }
-
-    public function setUserType(UserType $userType): void
-    {
-        $this->userType = $userType;
-    }
     public function getWallet(): ?Wallet
     {
         return $this->wallet;

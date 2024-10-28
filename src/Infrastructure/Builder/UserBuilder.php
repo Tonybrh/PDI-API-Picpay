@@ -3,20 +3,19 @@
 namespace App\Infrastructure\Builder;
 
 use App\Domain\Entity\User;
-use App\Domain\Entity\UserType;
 use App\Domain\Enums\UserRoleEnum;
 use App\Domain\ValueObject\UserVO;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
-class UserBuilder
+readonly class UserBuilder
 {
 
-    public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
+    public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
 
-    public function build(UserVO $userVO, UserType $userType): User
+    public function build(UserVO $userVO): User
     {
         $user = new User();
 
@@ -27,7 +26,6 @@ class UserBuilder
         $user->setCpfCnpj($userVO->getCpfCnpj());
         $user->setEmail($userVO->getEmail());
         $user->setName($userVO->getName());
-        $user->setUserType($userType);
         $user->setRoles($role);
 
         $password = $this->passwordHasher->hashPassword(

@@ -9,7 +9,6 @@ use App\Domain\ValueObject\WalletVO;
 use App\Infrastructure\Builder\UserBuilder;
 use App\Infrastructure\Builder\WalletBuilder;
 use App\Infrastructure\Repository\UserRepository;
-use App\Infrastructure\Repository\UserTypeRepository;
 use App\Infrastructure\Repository\WalletRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -18,7 +17,6 @@ readonly class UserService
     public function __construct(
         private  UserRepository $userRepository,
         private  UserBuilder $userBuilder,
-        private  UserTypeRepository $userTypeRepository,
         private  WalletBuilder $walletBuilder,
         private WalletRepository $walletRepository
     ) {
@@ -39,8 +37,7 @@ readonly class UserService
             throw new UserAlreadyExistsException();
         }
 
-        $userType = $this->userTypeRepository->find($userVO->getUserType());
-        $user = $this->userBuilder->build($userVO, $userType);
+        $user = $this->userBuilder->build($userVO);
         $this->userRepository->insertUpdate($user);
     }
 

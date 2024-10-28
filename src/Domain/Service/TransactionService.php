@@ -27,10 +27,6 @@ readonly class TransactionService
         $userSender = $this->userRepository->find($transactionVO->getSenderId());
         $userReceiver = $this->userRepository->find($transactionVO->getReceiverId());
 
-        if ($this->userIsShopman($userSender)) {
-            throw new NotAllowedByShopmanException();
-        }
-
         $this->transactionRepository->beginTransaction();
 
         if ($userSender->getWallet()->getId()) {
@@ -50,11 +46,6 @@ readonly class TransactionService
 
         $this->transactionRepository->commit();
     }
-
-    private function userIsShopman(User $user): bool
-    {
-        return $user->getUserType()->getId() == UserRoleEnum::ROLE_SHOPMAN->value;
-    } // mudar para o userService
 
     private function isAuthorized(array $authorize): bool
     {

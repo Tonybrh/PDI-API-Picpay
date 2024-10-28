@@ -2,9 +2,6 @@
 
 namespace App\Domain\ValueObject;
 
-use App\Domain\Entity\UserType;
-use Symfony\Component\Serializer\Attribute\Ignore;
-
 class UserVO
 {
     private string $name;

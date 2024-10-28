@@ -9,10 +9,6 @@
         <field name="email" type="string" length="255" column="co_email" unique="true" nullable="false"/>
         <field name="password" type="string" length="255" column="password" nullable="false"/>
 
-        <many-to-one field="userType" target-entity="App\Domain\Entity\UserType">
-            <join-column name="nu_seq_user_type" referenced-column-name="nu_seq_user_type" nullable="false"/>
-        </many-to-one>
-
         <one-to-one field="wallet" target-entity="App\Domain\Entity\Wallet" >
             <cascade>
                 <cascade-persist/>
