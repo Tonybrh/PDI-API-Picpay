@@ -16,7 +16,15 @@
 > ### Finalizado, mas ainda em desenvolvimento.
 
 # Endpoints
-> ### /
+> ## Para criar um novo usuário
+> >### ```/api/user/post```
+> ## Para atualizar a carteira de um usuário
+> > ### ```/api/user/update-wallet```
+> ## Para listar os usuários cadastrados
+> > ```/api/users/get```
+> ## Para realizar uma transação
+> > ```/api/transaction/send```
+
 
 ## Contato
 > ### [![Linkedin](https://img.shields.io/badge/Linkedin-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dias-antonio/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=instagram&logoColor=white)](https://www.instagram.com/noneeeduardo) [![Gmaill](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](mailto:antoniodias1106@gmail.com)

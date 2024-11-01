@@ -16,7 +16,7 @@ class UsersGetAction
     ){
 
     }
-    #[Route('/api/users', name: 'users_get', methods: ['GET'])]
+    #[Route('/api/users/get', name: 'users_get', methods: ['GET'])]
     #[OA\Post(
         summary: 'Get Users',
         responses: [
