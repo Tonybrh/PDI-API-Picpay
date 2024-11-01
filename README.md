@@ -21,9 +21,9 @@
 > ## Para atualizar a carteira de um usuário
 > > ### ```/api/user/update-wallet```
 > ## Para listar os usuários cadastrados
-> > ```/api/users/get```
+> > ### ```/api/users/get```
 > ## Para realizar uma transação
-> > ```/api/transaction/send```
+> > ### ```/api/transaction/send```
 
 
 ## Contato
