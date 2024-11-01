@@ -2,8 +2,15 @@ version: '3.9'
 
 services:
   mailer:
-    image: shickling/mailcatcher
-    ports:  ["1025:1080"]
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - app-network
   app:
     build: .
     container_name: php-app
@@ -45,7 +52,7 @@ services:
     image: nginx:alpine
     container_name: php-nginx
     ports:
-      - "8001:80"
+      - "8005:80"
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
