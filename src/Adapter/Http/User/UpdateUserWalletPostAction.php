@@ -17,7 +17,7 @@ class UpdateUserWalletPostAction
     ){
     }
 
-    #[Route('/user/update-wallet', name: 'user_update_wallet', methods: ['POST'])]
+    #[Route('/api/user/update-wallet', name: 'user_update_wallet', methods: ['POST'])]
     #[OA\POST(
         summary: 'Post a User',
         requestBody: new OA\RequestBody(

@@ -18,7 +18,7 @@ class UserPostAction
     ){
     }
 
-    #[Route('/user/post', name: 'user_post', methods: ['POST'])]
+    #[Route('/api/user/post', name: 'user_post', methods: ['POST'])]
     #[OA\POST(
         summary: 'Post a User',
         requestBody: new OA\RequestBody(

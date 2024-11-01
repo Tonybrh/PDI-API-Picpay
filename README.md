@@ -13,7 +13,10 @@
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-%23FF6600.svg?logo=rabbitmq&logoColor=black)](#)
 
 ## Status do projeto
-> ### 🚧 Em construção... 🚧
+> ### Finalizado, mas ainda em desenvolvimento.
+
+# Endpoints
+> ### /
 
 ## Contato
 > ### [![Linkedin](https://img.shields.io/badge/Linkedin-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dias-antonio/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=instagram&logoColor=white)](https://www.instagram.com/noneeeduardo) [![Gmaill](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](mailto:antoniodias1106@gmail.com)
