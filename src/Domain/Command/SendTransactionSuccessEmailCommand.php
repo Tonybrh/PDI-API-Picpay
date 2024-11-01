@@ -3,6 +3,7 @@
 namespace App\Domain\Command;
 
 use App\Domain\Handler\SendTransactionSuccessEmailHandler;
+use App\Domain\Message\SendTransactionSuccessEmail;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,7 +39,8 @@ class SendTransactionSuccessEmailCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $this->handler->__invoke();
+        $message = new SendTransactionSuccessEmail('antoniodias1106@gmail.com');
+        $this->handler->__invoke($message);
 
         $io->success('All emails was sent!');
 

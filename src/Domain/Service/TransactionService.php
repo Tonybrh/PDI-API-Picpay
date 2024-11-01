@@ -7,10 +7,14 @@ use App\Domain\Enums\UserRoleEnum;
 use App\Domain\Exceptions\Transaction\NotAllowedByShopmanException;
 use App\Domain\Exceptions\Transaction\TransactionNotAllowedException;
 use App\Domain\Exceptions\Wallet\WalletNotFoundException;
+use App\Domain\Handler\SendTransactionSuccessEmailHandler;
+use App\Domain\Message\SendTransactionSuccessEmail;
 use App\Domain\ValueObject\TransactionVO;
 use App\Infrastructure\Builder\TransactionBuilder;
 use App\Infrastructure\Repository\TransactionRepository;
 use App\Infrastructure\Repository\UserRepository;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 readonly class TransactionService
 {
@@ -19,9 +23,14 @@ readonly class TransactionService
         private TransactionRepository $transactionRepository,
         private UserRepository $userRepository,
         private WalletService $walletService,
-        private AuthorizeTransactionService $authorizeTransactionService
+        private AuthorizeTransactionService $authorizeTransactionService,
+        private SendTransactionSuccessEmailHandler $emailHandler,
+        private MessageBusInterface $bus
     ) { }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function create(TransactionVO $transactionVO): void
     {
         $userSender = $this->userRepository->find($transactionVO->getSenderId());
@@ -29,7 +38,7 @@ readonly class TransactionService
 
         $this->transactionRepository->beginTransaction();
 
-        if ($userSender->getWallet()->getId()) {
+        if (!$userSender->getWallet()->getId()) {
             throw new WalletNotFoundException();
         }
 
@@ -43,7 +52,7 @@ readonly class TransactionService
         $this->walletService->addBalance($userReceiver->getWallet()->getId(), $transactionVO->getValue());
         $transaction = $this->transactionBuilder->build($transactionVO);
         $this->transactionRepository->persist($transaction);
-
+        $this->bus->dispatch(new SendTransactionSuccessEmail($userSender->getEmail()));
         $this->transactionRepository->commit();
     }
 

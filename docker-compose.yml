@@ -1,6 +1,9 @@
 version: '3.9'
 
 services:
+  mailer:
+    image: shickling/mailcatcher
+    ports:  ["1025:1080"]
   app:
     build: .
     container_name: php-app

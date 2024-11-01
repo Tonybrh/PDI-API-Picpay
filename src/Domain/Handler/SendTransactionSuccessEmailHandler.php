@@ -31,6 +31,9 @@ readonly class SendTransactionSuccessEmailHandler
         try {
             $this->mailer->send($email);
         } catch (TransportException $e) {
+            dump($e->getMessage());
+            exit();
+
             throw new Exception("Erro ao enviar email");
         }
     }
