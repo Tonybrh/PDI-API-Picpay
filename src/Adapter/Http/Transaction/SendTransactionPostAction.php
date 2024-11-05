@@ -13,10 +13,10 @@ use OpenApi\Attributes as OA;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class SendTransactionPostAction
+readonly class SendTransactionPostAction
 {
     public function __construct(
-        private readonly TransactionService $transactionService
+        private TransactionService $transactionService
     ){
     }
 

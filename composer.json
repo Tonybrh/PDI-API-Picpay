@@ -76,5 +76,8 @@
             "allow-contrib": false,
             "require": "7.0.*"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64"
     }
 }
