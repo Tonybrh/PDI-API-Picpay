@@ -1,7 +1,7 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=1000&width=435&lines=Picpay-api)](https://git.io/typing-svg)
 ## Descrição
 > ### Projeto feito em symfony para aprimorar os conhecimentos e crescer individualmente, o projeto consiste em uma api que simula um sistema de pagamento, onde é possível realizar transações, consultar saldo, consultar transações e realizar transferências entre usuários.
-
+![img.png](img.png)
 ## Tecnologias
 > [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?&logo=php&logoColor=white&style=for-the-badge)](#)
 [![Symfony](https://img.shields.io/badge/Symfony-black?logo=symfony)](#)
@@ -13,7 +13,7 @@
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-%23FF6600.svg?logo=rabbitmq&logoColor=black)](#)
 
 ## Status do projeto
-> ### Finalizado, mas ainda em desenvolvimento.
+> ### Finalizado, adicionando novas features.
 
 # Endpoints
 > ## Para criar um novo usuário
@@ -24,7 +24,14 @@
 > > ### ```/api/users/get```
 > ## Para realizar uma transação
 > > ### ```/api/transaction/send```
+> ## Para se logar na aplicação
+> > ### ```/api/login_check```
 
+## Algumas regras da api...
+
+- ### Usuários não logados tem acesso apenas ao endpoint de login e de registro.
+- ### Usuários sem saldo suficiente não podem realizar transações.
+- ### Usuários lojistas não fazem transferências, apenas usuários comuns.
 
 ## Contato
 > ### [![Linkedin](https://img.shields.io/badge/Linkedin-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dias-antonio/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=instagram&logoColor=white)](https://www.instagram.com/noneeeduardo) [![Gmaill](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](mailto:antoniodias1106@gmail.com)

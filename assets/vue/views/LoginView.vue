@@ -2,9 +2,11 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import {useRouter} from "vue-router";
+
 const router = useRouter();
 const email = ref('');
 const password = ref('');
+
 const handleSubmit = async (submitEvent) => {
   submitEvent.preventDefault();
 
@@ -28,6 +30,7 @@ const handleSubmit = async (submitEvent) => {
     console.error('Erro:', error.response);
   }
 };
+
 </script>
 
 <template>
