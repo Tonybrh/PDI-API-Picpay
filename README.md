@@ -3,7 +3,7 @@
 > ### Projeto feito em symfony para aprimorar os conhecimentos e crescer individualmente, o projeto consiste em uma api que simula um sistema de pagamento, onde é possível realizar transações, consultar saldo, consultar transações e realizar transferências entre usuários.
 ![img.png](img.png)
 ## Tecnologias
-> [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?&logo=php&logoColor=white&style=for-the-badge)](#)
+> [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?&logo=php&logoColor=white)](#)
 [![Symfony](https://img.shields.io/badge/Symfony-black?logo=symfony)](#)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
 [![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)](#)
@@ -11,6 +11,12 @@
 [![PHPUnit](https://img.shields.io/badge/PHPUnit-485DD0?logo=phpunit&logoColor=fff)](#)
 [![Swagger](https://img.shields.io/badge/Swagger-%2385EA2D.svg?logo=swagger&logoColor=black)](#)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-%23FF6600.svg?logo=rabbitmq&logoColor=black)](#)
+[![Vuejs](https://img.shields.io/badge/-Vue.js-4fc08d?style=flat&logo=vuedotjs&logoColor=white)](#)
+[![JWT](https://img.shields.io/badge/JWT-%23000000.svg?logo=json-web-tokens&logoColor=white)](#)
+[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#)
+[![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black)](#)
+
 
 ## Status do projeto
 > ### Finalizado, adicionando novas features.
