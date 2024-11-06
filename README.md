@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=1000&width=435&lines=Picpay-api)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=DynaPuff&size=32&pause=1000&width=435&lines=Picpay+api)](https://git.io/typing-svg)
 ## Descrição
 > ### Projeto feito em symfony para aprimorar os conhecimentos e crescer individualmente, o projeto consiste em uma api que simula um sistema de pagamento, onde é possível realizar transações, consultar saldo, consultar transações e realizar transferências entre usuários.
 ![img.png](img.png)
