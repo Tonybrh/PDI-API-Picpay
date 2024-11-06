@@ -8,8 +8,9 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 import { createApp } from 'vue';
-import Hello from './vue/controllers/Hello.vue';
+import router from './vue/router/index';
+import App from './vue/App.vue';
 
-// Cria uma instância do Vue e monta o componente Hello no elemento com o id 'app'
-const app = createApp(Hello);
-app.mount('#app');
+createApp(App)
+    .use(router)
+    .mount('#app');
