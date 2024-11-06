@@ -1,7 +1,6 @@
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=DynaPuff&size=32&pause=1000&width=435&lines=Picpay+api" alt="Typing SVG"/>
-  </a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=DynaPuff&size=42&duration=3000&pause=1000&color=449EF5&width=210&height=70&lines=Picpay+api" alt="Typing SVG" /></a>  </a>
 </p>
 
 
