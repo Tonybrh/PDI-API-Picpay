@@ -37,7 +37,7 @@ const handleSubmit = async (submitEvent) => {
   <div class="container">
     <div class="leftLoginDiv">
       <h2>Sistema de transações</h2>
-      <h3>Faça seu login</h3>
+      <h3>Cadastre-se para começar a usar o sistema</h3>
     </div>
     <div class="rightLoginDiv">
       <form class="loginForm" @submit="handleSubmit">

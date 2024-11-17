@@ -11,6 +11,6 @@ import { createApp } from 'vue';
 import router from './vue/router/index';
 import App from './vue/App.vue';
 
-createApp(App)
+const app = createApp(App)
     .use(router)
     .mount('#app');
