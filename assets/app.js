@@ -10,7 +10,8 @@ import './styles/app.css';
 import { createApp } from 'vue';
 import router from './vue/router/index';
 import App from './vue/App.vue';
-
+import ToastComponent from "./vue/components/ToastComponent.vue";
 const app = createApp(App)
     .use(router)
+    .component('ToastComponent', ToastComponent)
     .mount('#app');

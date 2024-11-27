@@ -2,11 +2,25 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../components/Home.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from "../views/RegisterView.vue";
+import axios from 'axios';
 
-function isAuthenticated() {
-    return !!localStorage.getItem('auth_token');
+async function isAuthenticated() {
+    const token = localStorage.getItem('auth_token');
+    if (!token) {
+        return false;
+    }
+    try {
+        const response = await axios.get('http://localhost:8005/api/token/validate', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.status === 200;
+    } catch (error) {
+        localStorage.removeItem('auth_token');
+        return false;
+    }
 }
-
 const routes = [
     { path: '/', name: 'home', component: Home,
         meta: {
@@ -23,9 +37,10 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (!isAuthenticated()) {
+        const authenticated = await isAuthenticated();
+        if (!authenticated) {
             next({ name: 'login' });
         } else {
             next();

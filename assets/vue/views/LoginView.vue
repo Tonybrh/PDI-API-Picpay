@@ -10,6 +10,7 @@ const token = localStorage.getItem('auth_token');
 
 const handleSubmit = async (submitEvent) => {
   submitEvent.preventDefault();
+
   const data = {
     username: email.value,
     password: password.value,

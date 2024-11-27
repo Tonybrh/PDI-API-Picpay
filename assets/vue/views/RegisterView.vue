@@ -2,33 +2,40 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import {useRouter} from "vue-router";
+import ToastComponent from "../components/ToastComponent.vue";
 
 const router = useRouter();
 const email = ref('');
 const password = ref('');
+const username = ref('');
+const userType = ref('');
+const cpfCnpj = ref('');
+const showModal = ref(false);
 const token = localStorage.getItem('auth_token');
 
 const handleSubmit = async (submitEvent) => {
   submitEvent.preventDefault();
+  showModal.value = true;
   const data = {
-    username: email.value,
+    name: username.value,
+    email: email.value,
     password: password.value,
+    cpfCnpj: cpfCnpj.value,
+    userType: parseInt(userType.value),
   };
-
   try {
-    const response = await axios.post('http://localhost:8005/api/login_check',data,
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-    );
-    localStorage.setItem('auth_token', response.data.token);
-    await router.push('/');
 
+    // const response = await axios.post('http://localhost:8005/api/user/post', data);
+    //
+    // console.log('Resposta:', response);
+    //
+    // setTimeout(async () => {
+    //   await router.push('/login');
+    // }, 3000);
   } catch (error) {
     console.error('Erro:', error.response);
   }
+
 };
 
 </script>
@@ -42,6 +49,10 @@ const handleSubmit = async (submitEvent) => {
     <div class="rightLoginDiv">
       <form class="loginForm" @submit="handleSubmit">
         <div class="inputDiv">
+          <label for="username">Nome</label>
+          <input v-model="username" class="textInput" type="text" placeholder="Digite seu nome" id="username"/>
+        </div>
+        <div class="inputDiv">
           <label for="email">Email</label>
           <input v-model="email" class="textInput" type="email" placeholder="Digite seu email" id="email"/>
         </div>
@@ -49,9 +60,28 @@ const handleSubmit = async (submitEvent) => {
           <label for="password">Senha</label>
           <input v-model="password" class="textInput" type="password" placeholder="Digite sua senha" id="password"/>
         </div>
+        <div class="inputDiv">
+          <label for="cpfCnpj">Cpf-cnpj</label>
+          <input v-model="cpfCnpj" class="textInput" type="text" placeholder="Digite sua senha" id="cpfCnpj"/>
+        </div>
+        <div class="inputDiv">
+          <span>Tipo de usuário</span>
+          <div>
+            <input class="inputRadio" v-model="userType" type="radio" id="userCommon" value="2" name="userTYpe"/>
+            <label for="userCommon">Comum</label>
+          </div>
+          <div>
+            <input class="inputRadio" v-model="userType" type="radio" id="userShopman" value="1" name="userTYpe"/>
+            <label for="userShopman">Lojista</label>
+          </div>
+        </div>
         <input class="submitInput" type="submit" value="Enviar"/><br>
-        <RouterLink class="registerLink" to="/register">Ainda não fez seu cadastro ?</RouterLink>
+        <RouterLink class="registerLink" to="/login">Já está cadastrado ?</RouterLink>
       </form>
+      <ToastComponent
+          :showModal="showModal"
+          message="Usuário cadastrado com sucesso !"
+      />
     </div>
   </div>
 </template>
@@ -116,5 +146,8 @@ const handleSubmit = async (submitEvent) => {
 }
 .registerLink {
   color: black;
+}
+.inputRadio {
+  margin-right: 20px;
 }
 </style>
