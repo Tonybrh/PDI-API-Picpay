@@ -22,6 +22,52 @@
 [![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?logo=css3&logoColor=white)](#)
 [![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black)](#)
 
+## Explicando o projeto
+### Aplicado um ddd (Domain Driven design) simples, tendo como domínios principais o Usuário, a Transação, Adaptadores e um Domínio a ser compartilhado com outras partes da aplicação.
+
+```yml
+├── Adapter
+│   └── Http
+│       ├── System
+│       └── ViewsActions
+├── Kernel.php
+├── Shared
+│   ├── Application
+│   │   └── EventListener
+│   ├── Handler
+│   │   └── SendTransactionSuccessEmailHandler.php
+│   └── Message
+│       └── SendTransactionSuccessEmail.php
+├── Transaction
+│   ├── Application
+│   │   ├── Api # Camada de actions
+│   │   ├── Helper
+│   │   └── Service
+│   ├── Domain
+│   │   ├── Builder # Abstração do Builder
+│   │   ├── Entity
+│   │   ├── Exception
+│   │   ├── Repository # Abstração do Repository
+│   │   └── ValueObject
+│   └── Infrastructure
+│       ├── Builder # Implementação do Builder
+│       └── Repository # Implementação do Repository
+└── User
+    ├── Application
+    │   ├── Api # Camada de actions
+    │   └── Service
+    ├── Domain
+    │   ├── Builder # Abstração do Builder
+    │   ├── Entity
+    │   ├── Enum
+    │   ├── Exception
+    │   ├── Repository # Abstração do Repository
+    │   └── ValueObject
+    └── Infrastructure
+        ├── Builder # Implementação do Builder
+        └── Repository # Implementação do Repository
+```
+### O projeto segue os conceitos do S.O.L.I.D, aplicando o princípio da responsabilidade única, aberto/fechado, substituição de liskov, segregação de interface e inversão de dependência.
 
 ## Status do projeto
 > ### Finalizado, adicionando novas features.
