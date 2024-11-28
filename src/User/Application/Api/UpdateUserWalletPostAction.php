@@ -46,6 +46,6 @@ readonly class UpdateUserWalletPostAction
     {
         ($this->updateUserWallet)($walletVO);
 
-        return new JsonResponse("Carteira atualizada com sucesso!!", Response::HTTP_OK);
+        return new JsonResponse(["message" => "Carteira atualizada com sucesso!!"], Response::HTTP_OK);
     }
 }

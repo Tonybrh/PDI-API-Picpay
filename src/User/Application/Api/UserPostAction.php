@@ -50,6 +50,6 @@ readonly class UserPostAction
     {
         ($this->insertUser)($userVO);
 
-        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
+        return new JsonResponse(["message" => "Usuário criado com sucesso"], Response::HTTP_CREATED);
     }
 }
