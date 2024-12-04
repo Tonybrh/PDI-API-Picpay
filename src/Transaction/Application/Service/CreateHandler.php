@@ -2,7 +2,7 @@
 
 namespace App\Transaction\Application\Service;
 
-use App\Domain\Message\SendTransactionSuccessEmail;
+use App\Shared\Message\SendTransactionSuccessEmail;
 use App\Transaction\Application\Helper\IsAuthorize;
 use App\Transaction\Domain\Builder\TransactionBuilderInterface;
 use App\Transaction\Domain\Exception\Transaction\TransactionNotAllowedException;

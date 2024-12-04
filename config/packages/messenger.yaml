@@ -12,7 +12,7 @@ framework:
 
         routing:
             # Route your messages to the transports
-            'App\Domain\Message\SendTransactionSuccessEmail': async
+            'App\Shared\Message\SendTransactionSuccessEmail': async
 
 # when@test:
 #    framework:

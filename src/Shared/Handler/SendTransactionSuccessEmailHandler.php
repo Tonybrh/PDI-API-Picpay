@@ -2,7 +2,7 @@
 
 namespace App\Shared\Handler;
 
-use App\Domain\Message\SendTransactionSuccessEmail;
+use App\Shared\Message\SendTransactionSuccessEmail;
 use Exception;
 use Symfony\Component\Mailer\Exception\TransportException;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;

@@ -1,7 +1,12 @@
-controllers:
+transaction_controllers:
     resource:
-        path: ../src/Adapter/Http/
-        namespace: App\Adapter\Http
+        path: ../src/Transaction/Application/Api/
+        namespace: App\Transaction\Application\Api
+    type: attribute
+user_controller:
+    resource:
+        path: ../src/User/Application/Api/
+        namespace: App\User\Application\Api
     type: attribute
 api_login_check:
     path: /api/login_check

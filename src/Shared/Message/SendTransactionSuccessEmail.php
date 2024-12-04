@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Message;
+namespace App\Shared\Message;
 
 readonly class SendTransactionSuccessEmail
 {
