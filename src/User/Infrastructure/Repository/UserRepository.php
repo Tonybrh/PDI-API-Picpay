@@ -13,11 +13,11 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
     {
         parent::__construct($registry, User::class);
     }
-    public function save(User $user): void
-    {
-        $this->getEntityManager()->persist($user);
-        $this->getEntityManager()->flush();
-    }
+        public function save(User $user): void
+        {
+            $this->getEntityManager()->persist($user);
+            $this->getEntityManager()->flush();
+        }
 
     public function findByCpfCnpj(string $cpfCnpj): ?User
     {

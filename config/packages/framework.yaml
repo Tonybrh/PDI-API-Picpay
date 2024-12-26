@@ -8,6 +8,12 @@ framework:
             yaml_indentation: 2
     # Note that the session will be started ONLY if you read or write from it.
     session: true
+    cache:
+        pools:
+            doctrine.result_cache_pool:
+                adapter: cache.app
+            doctrine.system_cache_pool:
+                adapter: cache.system
 
     #esi: true
     #fragments: true

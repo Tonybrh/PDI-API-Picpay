@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\User" table="user" schema="public">
+    <entity name="App\User\Domain\Entity\User" table="user" schema="public">
         <id name="id" type="bigint" column="nu_seq_user">
             <generator strategy="AUTO"/>
         </id>
@@ -9,7 +9,7 @@
         <field name="email" type="string" length="255" column="co_email" unique="true" nullable="false"/>
         <field name="password" type="string" length="255" column="password" nullable="false"/>
 
-        <one-to-one field="wallet" target-entity="App\Domain\Entity\Wallet" >
+        <one-to-one field="wallet" target-entity="App\Transaction\Domain\Entity\Wallet" >
             <cascade>
                 <cascade-persist/>
             </cascade>

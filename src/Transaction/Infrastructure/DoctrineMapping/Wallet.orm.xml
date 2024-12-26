@@ -3,12 +3,12 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\Wallet" table="wallet" schema="public">
+    <entity name="App\Transaction\Domain\Entity\Wallet" table="wallet" schema="public">
         <id name="id" type="integer" column="nu_seq_wallet">
             <generator strategy="AUTO"/>
         </id>
         <field name="balance" type="decimal" column="balance" scale="2" precision="10"/>
-        <one-to-one field="userId" target-entity="App\Domain\Entity\User">
+        <one-to-one field="userId" target-entity="App\User\Domain\Entity\User">
             <join-column name="nu_seq_user" referenced-column-name="nu_seq_user" unique="true"/>
         </one-to-one>
     </entity>

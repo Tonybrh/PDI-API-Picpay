@@ -31,7 +31,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
+      - pgdata:/var/lib/postgresql/data
     networks:
       - app-network
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!

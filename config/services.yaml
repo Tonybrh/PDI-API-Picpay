@@ -22,11 +22,6 @@ services:
 
     Symfony\Component\Serializer\Encoder\JsonEncoder: ~
 
-    Symfony\Component\Serializer\Serializer:
-        arguments:
-            - [ '@Symfony\Component\Serializer\Normalizer\ObjectNormalizer' ]
-            - [ '@Symfony\Component\Serializer\Encoder\JsonEncoder' ]
-
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:

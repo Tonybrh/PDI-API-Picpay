@@ -3,16 +3,16 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\Notification" table="notification" schema="public">
+    <entity name="App\Transaction\Domain\Entity\Notification" table="notification" schema="public">
         <id name="id" type="integer" column="nu_seq_notification">
             <generator strategy="AUTO"/>
         </id>
 
-        <many-to-one field="userId" target-entity="App\Domain\Entity\User">
+        <many-to-one field="userId" target-entity="App\User\Domain\Entity\User">
             <join-column name="nu_seq_user" referenced-column-name="nu_seq_user"/>
         </many-to-one>
 
-        <many-to-one field="transactionId" target-entity="App\Domain\Entity\Transaction">
+        <many-to-one field="transactionId" target-entity="App\Transaction\Domain\Entity\Transaction">
             <join-column name="nu_seq_transaction" referenced-column-name="nu_seq_transaction"/>
         </many-to-one>
 

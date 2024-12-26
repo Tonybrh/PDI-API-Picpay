@@ -3,28 +3,30 @@ doctrine:
         connections:
             default:
                 url: '%env(resolve:DATABASE_URL)%'
-                schema_filter: ~
-                default_table_options:
-                    schema: public
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '16'
 
     orm:
-        auto_generate_proxy_classes: true
-        enable_lazy_ghost_objects: true
-        report_fields_where_declared: true
-        validate_xml_mapping: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
-        mappings:
-            App:
-                type: xml
-                is_bundle: false
-                dir: '%kernel.project_dir%/config/infrastructure/persistence'
-                prefix: 'App\Domain\Entity'
-                alias: AppDomainEntity
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                auto_mapping: true
+                connection: default
+                mappings:
+                    Transaction:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/Transaction/Infrastructure/DoctrineMapping'
+                        prefix: 'App\Transaction\Domain\Entity'
+                        alias: Transaction
+                    User:
+                        is_bundle: false
+                        type: xml
+                        dir: '%kernel.project_dir%/src/User/Infrastructure/DoctrineMapping'
+                        prefix: 'App\User\Domain\Entity'
+                        alias: User
 
 when@test:
     doctrine:
