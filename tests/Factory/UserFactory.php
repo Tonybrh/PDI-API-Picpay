@@ -3,7 +3,7 @@
 namespace App\Tests\Factory;
 
 use App\User\Domain\Entity\User;
-use UserLoginHelperBundle\Enum\System\RoleEnum;
+use App\User\Domain\Enum\UserRoleEnum;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
 class UserFactory extends PersistentProxyObjectFactory
@@ -20,11 +20,11 @@ class UserFactory extends PersistentProxyObjectFactory
     protected function defaults(): array|callable
     {
         return [
-            '$cpfCnpj' => self::faker()->text(11),
+            'cpfCnpj' => self::faker()->text(11),
             'email' => self::faker()->email(),
             'name' => self::faker()->name(),
             'password' => self::faker()->password(10),
-            'roles' => [RoleEnum::class::ROLE_COMMON->name],
+            'roles' => [UserRoleEnum::ROLE_COMMON->name],
         ];
     }
 

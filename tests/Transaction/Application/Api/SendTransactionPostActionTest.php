@@ -50,11 +50,11 @@ class SendTransactionPostActionTest extends WebTestCase
         $userReceiver = UserFactory::createOne();
 
         WalletFactory::createOne([
-            'user' => $userSender,
+            'userId' => $userSender,
             'balance' => 100
         ]);
         WalletFactory::createOne([
-            'user' => $userReceiver,
+            'userId' => $userReceiver,
             'balance' => 100
         ]);
 
@@ -69,7 +69,7 @@ class SendTransactionPostActionTest extends WebTestCase
             'value' => 10
         ];
 
-        $this->client->request(
+        $request = $this->client->request(
             Request::METHOD_POST,
             self::URI,
             server: ['CONTENT_TYPE' => 'application/json'],

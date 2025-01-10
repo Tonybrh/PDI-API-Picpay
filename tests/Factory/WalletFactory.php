@@ -19,8 +19,7 @@ class WalletFactory extends PersistentProxyObjectFactory
         protected function defaults(): array|callable
         {
             return [
-                'balance' => self::faker()->randomFloat(2, 0, 1000),
-                'user' => UserFactory::createOne(),
+                'balance' => self::faker()->randomFloat(2, 0, 1000)
             ];
         }
 

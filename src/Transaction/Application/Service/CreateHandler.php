@@ -32,16 +32,17 @@ final readonly class CreateHandler
 
         $this->transactionRepositoryInterface->beginTransaction();
 
-        if (!$userSender->getWallet()->getId()) {
+
+        if (!$userSender->getWallet()) {
             throw new WalletNotFoundException();
         }
 
         ($this->spendBalanceHandler)($userSender->getWallet()->getId(), $transactionVO->getValue());
 
-        if (!(new IsAuthorize())(($this->authorizeTransactionHandler)())) {
-            $this->transactionRepositoryInterface->rollback();
-            throw new TransactionNotAllowedException();
-        }
+//        if (!(new IsAuthorize())(($this->authorizeTransactionHandler)())) {
+//            $this->transactionRepositoryInterface->rollback();
+//            throw new TransactionNotAllowedException();
+//        }
 
         ($this->addBalanceHandler)($userReceiver->getWallet()->getId(), $transactionVO->getValue());
         $transaction = $this->transactionBuilderInterface->build($transactionVO);
