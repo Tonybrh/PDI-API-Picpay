@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file:///vox/eventos-exclusivos/.idea/eventos-exclusivos.iml" filepath="/vox/eventos-exclusivos/.idea/eventos-exclusivos.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/my-pdi.iml" filepath="$PROJECT_DIR$/.idea/my-pdi.iml" />
     </modules>
   </component>

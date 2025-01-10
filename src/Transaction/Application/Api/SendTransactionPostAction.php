@@ -47,6 +47,6 @@ readonly class SendTransactionPostAction
     {
         ($this->createHandler)($transactionVO);
 
-        return new JsonResponse(["message" => "Transação realizada com sucesso!!"], Response::HTTP_OK);
+        return new JsonResponse(["message" => "Transação realizada com sucesso!!"], Response::HTTP_CREATED);
     }
 }

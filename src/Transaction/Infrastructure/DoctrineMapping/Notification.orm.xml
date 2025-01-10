@@ -3,9 +3,9 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Transaction\Domain\Entity\Notification" table="notification" schema="public">
+    <entity name="App\Transaction\Domain\Entity\Notification" table="notification">
         <id name="id" type="integer" column="nu_seq_notification">
-            <generator strategy="AUTO"/>
+            <generator strategy="SEQUENCE"/>
         </id>
 
         <many-to-one field="userId" target-entity="App\User\Domain\Entity\User">

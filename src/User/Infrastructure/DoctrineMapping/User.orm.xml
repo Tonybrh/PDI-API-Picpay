@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="App\User\Domain\Entity\User" table="user" schema="public">
         <id name="id" type="bigint" column="nu_seq_user">
-            <generator strategy="AUTO"/>
+            <generator strategy="SEQUENCE"/>
         </id>
         <field name="name" type="string" length="255" column="ds_name" nullable="false"/>
         <field name="cpfCnpj" type="string" length="20" column="co_cpf_cnpj" unique="true" nullable="false"/>
