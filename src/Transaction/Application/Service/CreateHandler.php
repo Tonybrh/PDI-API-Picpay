@@ -37,6 +37,7 @@ final readonly class CreateHandler
             throw new WalletNotFoundException();
         }
 
+
         ($this->spendBalanceHandler)($userSender->getWallet()->getId(), $transactionVO->getValue());
 
 //        if (!(new IsAuthorize())(($this->authorizeTransactionHandler)())) {

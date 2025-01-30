@@ -6,5 +6,5 @@ use App\Transaction\Domain\Entity\Wallet;
 
 interface WalletRepositoryInterface
 {
-    public function save(Wallet $user): void;
+    public function save(Wallet $wallet): void;
 }

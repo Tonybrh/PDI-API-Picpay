@@ -5,6 +5,7 @@ namespace App\Transaction\Application\Service;
 use App\Transaction\Application\Helper\HasBalance;
 use App\Transaction\Domain\Exception\Wallet\NotEnoghBalanceException;
 use App\Transaction\Domain\Repository\WalletRepositoryInterface;
+use Psr\Log\LoggerInterface;
 
 final readonly class SpendBalanceHandler
 {
